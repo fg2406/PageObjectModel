@@ -25,6 +25,7 @@ public class C02_PropertiesIlkClass {
 
     // test data password : Manager1!
     hotelMyCampPage.passwordBox.sendKeys(ConfigReader.getProperty("HMCValidPassword"));
+    hotelMyCampPage.bekle(3);
     hotelMyCampPage.loginButonu.click();
 
     //Degerleri girildiginde sayfaya basarili sekilde girilebildigini test et
