@@ -25,6 +25,11 @@ public class C01_DriverIlkTest {
     // Biz Driver class'dan getDriver()'i ilk calistirdigimizda new atamasi olsun
     // sonraki calismalarda atama olmasin istiyoruz
     // bunun icin driver = new ChromeDriver(); satirni bir if blogu icine aliriz
+
+   Driver.closeDriver();  //methodu burda birkez cagirdik bos degilse olan driver kapat,bossa tamamen kapatma
+
+
+
 }
 
 
@@ -36,7 +41,7 @@ public class C01_DriverIlkTest {
     String actualUrl=Driver.getDriver().getCurrentUrl();
     Assert.assertTrue(actualUrl.contains("best"));
 
-     Driver.closeDriver();
+     Driver.closeDriver();  //bunu yazmazsan kapatmaz,close methodunu cagirmmadik
 
 }
 

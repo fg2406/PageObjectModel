@@ -14,8 +14,11 @@ public class Driver {
 
    public static WebDriver  getDriver(){
        WebDriverManager.chromedriver().setup();
-       if(driver==null){     // bu if sayesinde kod calisirken bir kere new keyword ile driver olusturulaca
-                               // diger kullanimlarda new devreye girmeyecek
+      /*if icine sarti koymasak her bu method cagirildiginda new celisir ve yeni bir browser acilir.cunku bir her isimizi artik kendi
+      * olusturdugumuz getDriver methodu cagirarak yapacagiz.Eger driver bos degilse new(yeni) browser acma devam et,yok bossa ici nullsa yani bir
+      * browser ac demek   */
+
+       if(driver==null){
            driver=new ChromeDriver();
        }
 
@@ -26,9 +29,9 @@ public class Driver {
    }
 
   public  static  void  closeDriver(){
-     if(driver!=null){
-         driver.quit();
-         driver=null;
+     if(driver!=null){   //eger driver icinde birsey varsa yani bos(null) degilse
+         driver.quit();    // o var olanlari sil
+         driver=null;    //eger driver ici bos ise kapatma
      }
 
 

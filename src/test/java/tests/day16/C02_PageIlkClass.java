@@ -12,38 +12,39 @@ public class C02_PageIlkClass {
    //POM'de farkli class'lara farkli sekilde ulasilmasi benimsenmistir
     //driver class'i icin static yontemi kullaniyoruz
     //page class'lari icin ise obje uzerinden kullanilmasi tercih edilmistir
+//POM'de farkli class'lara farkli sekilde ulasilmasi benimsenmistir
+   // Driver class'i icin static yontemi kullaniyoruz
+   // Page Class'lari icin ise obje uzerinden kullanilmasi tercih edilmistir
+   @Test
+   public void test01(){
+       // Amazon'a gidelim
+       Driver.getDriver().get("https://www.amazon.com");
+       // arama kutusuna Nutella yazip aratalim
+       AmazonPage amazonPage=new AmazonPage();
+       amazonPage.amazonAramaKutusu.sendKeys("Nutella" + Keys.ENTER);
 
+       // Atama sonuclarinin Nutella icerdigini test edelim
+       String actualSonucStr=amazonPage.sonucYazisiElementi.getText();
+       Assert.assertTrue(actualSonucStr.contains("Nutella"));
 
-        @Test
-        public void test01(){
+       Driver.closeDriver();
 
-            //amazona git
-            Driver.getDriver().get("http://www.amazon.com");
+   }
 
-            //arama kutusuna Nutella yaz ve arat.
-            AmazonPage amazonPage= new AmazonPage();
-            amazonPage.amazonAramaKutusu.sendKeys("Nutella" + Keys.ENTER);
+    @Test
+    public void test02(){
+        // amazona gidelim
+        Driver.getDriver().get("https://www.amazon.com");
+        //java icin arama yapalim
+        AmazonPage amazonPage=new AmazonPage();
+        amazonPage.amazonAramaKutusu.sendKeys("java"+Keys.ENTER);
+        // sonucun java icerdigini test edelim
+        String sonucYazisiStr=amazonPage.sonucYazisiElementi.getText();
 
-            //arama sonuclarinin Nutella cerdigini test et.
-            String actualSonucStr= amazonPage.sonucYazisiElementi.getText();
-
-            Driver.closeDriver();
-
-
+        Assert.assertTrue(sonucYazisiStr.contains("java"));
+        Driver.closeDriver();
     }
 
-  @Test
-    public  void  test02(){
-      //amazon'a gidelim
-      Driver.getDriver().get("https://www.amazon.com");
-      //java aramasi yapalim
-      AmazonPage amazonPage=new AmazonPage();
-      amazonPage.amazonAramaKutusu.sendKeys("java");
-      //sonucun java icerdigini test edelim
-      String SonucYazisi1=amazonPage.sonucYazisiElementi.getText();
-      Assert.assertTrue(SonucYazisi1.contains("java"+Keys.ENTER));
-    Driver.closeDriver();
 
-  }
 
 }
