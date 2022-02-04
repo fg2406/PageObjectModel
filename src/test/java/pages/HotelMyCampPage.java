@@ -3,6 +3,7 @@ package pages;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import utilities.ConfigReader;
 import utilities.Driver;
 
 public class HotelMyCampPage {
@@ -39,13 +40,36 @@ public class HotelMyCampPage {
     @FindBy(xpath="//span[text()='ListOfUsers']")
     public WebElement basariliGirisYaziElementi;
 
+    @FindBy(xpath =" //span[.='Hotel Management']" )
+    public WebElement hotelManagementLinki;
+
+    @FindBy(xpath = "//a[text()='Hotel List'] ")
+    public  WebElement hotelListLinki;
+
+    @FindBy(xpath = "//a[@class='btn btn-circle btn-default']")
+    public WebElement addHotelLinki;
+
+    @FindBy(xpath = "//input[@id='Code']")
+    public  WebElement addHotelCodeKutusu;
+
 
     public void bekle(int saniye){
         try {
-            Thread.sleep(saniye*1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+            Thread.sleep(saniye*1000);  //her seferinde Thread.sleep yazinca exceptions atiyor bunu asmak adina
+        } catch (InterruptedException e) {    //try-catch bloguna aldik
+            e.printStackTrace();             //method icine alarak cagirilmasi,kullanimi kolay
         }
     }
+
+    public  void  girisYap(){
+        Driver.getDriver().get(ConfigReader.getProperty("HMCUrl"));
+        ilkLoginLinki.click();
+        usernameBox.sendKeys(ConfigReader.getProperty("HMCValidUsername"));
+        passwordBox.sendKeys(ConfigReader.getProperty("HMCValidPassword"));
+
+
+    }
+
+
 
 }

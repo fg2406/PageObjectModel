@@ -12,11 +12,11 @@ import java.time.Duration;
 
 public class Driver {
 
-   private Driver(){
-
+    Driver(){  //eger baska yerden driver ulasilmasin istersek obje uretilmesin istersek bunu koyariz drivere
+                       //alttaki yeri private yapariz singlon pattern kullanimi bu  sekilde
    }
 
-    private static WebDriver driver;
+     static WebDriver driver;
 
    public static WebDriver  getDriver(){
 
@@ -36,10 +36,10 @@ public class Driver {
                  WebDriverManager.chromedriver().setup();
                  driver=new FirefoxDriver();
                  break;
-             case"opera":
-                 WebDriverManager.chromedriver().setup();
-                 driver=new OperaDriver();
-                 break;
+            // case"opera":
+               //  WebDriverManager.chromedriver().setup();
+                 //driver=new OperaDriver();
+                // break;
              case"safari":
                  WebDriverManager.chromedriver().setup();
                  driver=new SafariDriver();

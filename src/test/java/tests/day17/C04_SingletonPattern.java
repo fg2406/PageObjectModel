@@ -1,6 +1,7 @@
 package tests.day17;
 
 import org.testng.annotations.Test;
+import utilities.Driver;
 
 public class C04_SingletonPattern {
 
@@ -14,12 +15,14 @@ public class C04_SingletonPattern {
         // ancak Driver class'inda driver isminde bir instance variable da var
         // ve biz obje ureterek bu instance driver'a ulasabiliriz
 
-        //Driver driver1=new Driver();
-
+        // Driver driver1=new Driver();
         //Driver driver2=new Driver();
 
         //Driver driver3=new Driver();
 
+        Driver.getDriver();  //sadece class ismi ile method'a ulasilabilir,yine ulasiliyor herseye ama sadece obje uretilmiyor
+
+        Driver.closeDriver();
 
         // Singleton pattern kabul gormus bir pattern'dir
         // amac bir class'dan obje uretilmemesini saglamaktir
