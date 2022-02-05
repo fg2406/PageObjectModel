@@ -57,4 +57,17 @@ public class HMCWebTablePage {
 
 
     }
+
+       public void sutunYazdir(int sutun) {
+
+       //her bir satirdaki istenen sutun elementini yazdirmak icin once satir sayisini bilmemiz lazim
+        //gittigimiz tablonun once satirlar Listesini locate ederiz
+
+        int satirSayisi= satirlarListesi.size();
+
+        for (int i=1;i<=satirSayisi;i++){
+         System.out.println(hucreWebelementGetir(i,sutun)); //i satir sayisi
+        }
+
+    }
 }
