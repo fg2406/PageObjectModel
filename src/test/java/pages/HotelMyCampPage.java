@@ -11,7 +11,7 @@ public class HotelMyCampPage {
 
 
 
- public HotelMyCampPage(){
+    public HotelMyCampPage(){
        PageFactory.initElements(Driver.getDriver(),this);
 
     }
