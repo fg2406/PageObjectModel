@@ -21,6 +21,7 @@ public class HMCWebTablePage {
 
     @FindBy (xpath = "//thead//tr[1]//th")
     public List<WebElement> headerBirinciSatirDatalar;
+    //bir eleman dondersede findBy ile cok donsede,elemet-elements gibi ayrimi yok,biz test kisminda ayrim yapariz
 
     @FindBy(xpath = "//tbody")
     public WebElement tumBodyWebElementi;
@@ -33,41 +34,52 @@ public class HMCWebTablePage {
     public List<WebElement> satirlarListesi;
 
 
-    public  WebElement satirGetir(int satirNo){  //onje ile cagirilacak static gerek yok
-
-     //2.satiri yazdir //tbody//tr[2]
-     //7.satiri yazdir //tbody//tr[7]
-     String satirDinamikXpath="//tbody//tr["+ satirNo +"]";
-      WebElement  satirElementi=Driver.getDriver().findElement(By.xpath(satirDinamikXpath)) ;
-
-         return satirElementi;
-
-    }
+    @FindBy(xpath = "//tbody//tr[4]//td")
+   public  List<WebElement> dorduncuSatirElementi;
 
 
-    public String  hucreWebelementGetir(int satir, int sutun) {
-     //2.satirin 4.datasi //tbody//tr[2]//td[4]
-     //4.satirin 5.datasi  //tbody//tr[4]//td[5]
 
-      String dinamikHucreXpath="//tbody//tr["+ satir +"]//td["+ sutun +"]";
-       WebElement istenenHucreElementi=Driver.getDriver().findElement(By.xpath(dinamikHucreXpath));
-       String hucreDatasi= istenenHucreElementi.getText();
+ public WebElement satirGetir(int satirNo){
+  // 2.satiri yazdir  //tbody//tr[2]  //2 ve 7 disinda hersey ayni bu yuzden dinamik yaptik
+  // 7.satiri yazdir //tbody//tr[7]
 
-       return hucreDatasi;
+  String satirDinamikXpath= "//tbody//tr["+ satirNo +"]";
+  WebElement satirElementi=Driver.getDriver().findElement(By.xpath(satirDinamikXpath));  //eski usul yaptik locate,finbay yapmadik
+ //tek bir element oldugu icin element(elements degil)
+
+  return satirElementi;
 
 
-    }
 
-       public void sutunYazdir(int sutun) {
+ }
 
-       //her bir satirdaki istenen sutun elementini yazdirmak icin once satir sayisini bilmemiz lazim
-        //gittigimiz tablonun once satirlar Listesini locate ederiz
 
-        int satirSayisi= satirlarListesi.size();
+ public String hucreWebelementGetir(int satir, int sutun) {
+    //datalar icin String daha uygun
 
-        for (int i=1;i<=satirSayisi;i++){
-         System.out.println(hucreWebelementGetir(i,sutun)); //i satir sayisi
+    //2.satirin(tr=row=satir) 4.datasi(hucre,datalar=td)  //tbody//tr[2]//td[4]
+    //4.satirin 5.datasi           //tbody//tr[4]//td[5]
+
+    String dinamikHucreXpath="//tbody//tr["+ satir +"]//td["+ sutun +"]";
+   WebElement istenenHucreElementi=Driver.getDriver().findElement(By.xpath(dinamikHucreXpath));
+   String hucreDatasi=istenenHucreElementi.getText();
+
+   return hucreDatasi;
+
+ }
+
+    public void sutunYazdir(int sutun) {
+    //herbir satirdaki istenen sutun   elementini yazdirabilmek icin
+        //once satir sayisini bilmek lazim
+
+     int satirSayisi= satirlarListesi.size(); //satirlar saysini getirir
+       for (int i=1 ;i<=satirSayisi ;i++){     //her bir satir for icinde doner
+           System.out.println(hucreWebelementGetir(i,sutun));    //1.satir,4.sutun,2.satir 4.sutun ...seklinde gider
+
+            //bur methodla istenen sutundaki tum elementleri getirir
+
+
         }
 
-    }
+ }
 }
