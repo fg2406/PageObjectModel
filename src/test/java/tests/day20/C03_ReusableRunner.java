@@ -5,7 +5,7 @@ import org.testng.annotations.Test;
 
 import java.io.FileNotFoundException;
 
-public class ReusableRunner {
+public class C03_ReusableRunner {
 
 @Test
     public  void test01() throws FileNotFoundException {
