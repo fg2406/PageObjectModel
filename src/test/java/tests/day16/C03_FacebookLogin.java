@@ -9,7 +9,7 @@ public class C03_FacebookLogin {
 
 
 
-     @Test
+     @Test(groups = "miniRegression,smoke")
     public  void  test01(){
          //1 - https://www.facebook.com/ adresine gidin
          Driver.getDriver().get("https://www.facebook.com/");
