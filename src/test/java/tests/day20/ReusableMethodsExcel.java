@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ReusableMethods {
+public class ReusableMethodsExcel {
 
     //bir method olusturalim
     //dosya yolu ve satir,hucre indexini verince hucre bilgisini yazdirsin

@@ -18,7 +18,7 @@ public class C05_ExceliMapeYukleme {
        //System.out.println(ReusableMethods.mapOlustur(path,sayfaAdi));  //bu sekilde hersey gelir tablodan
        //key value olarak,Benin=Porto Novo, Benin, Porto Novo ...
 
-       Map<String,String> ulkelerMap=ReusableMethods.mapOlustur(path,sayfaAdi);
+       Map<String,String> ulkelerMap= ReusableMethodsExcel.mapOlustur(path,sayfaAdi);
 
        //olusturdugumuz map'i kullanarak Germany'in bilgilerini yazdirin
        System.out.println(ulkelerMap.get("Almanya"));
