@@ -18,7 +18,9 @@ import java.util.function.Function;
 
 
         public static String getScreenshot(String name) throws IOException {
+
             // naming the screenshot with the current date to avoid duplication
+
             String date = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date());
             // TakesScreenshot is an interface of selenium that takes the screenshot
             TakesScreenshot ts = (TakesScreenshot) Driver.getDriver();
@@ -55,6 +57,7 @@ import java.util.function.Function;
 
 
         //==========Return a list of string given a list of Web Element====////
+
         public static List<String> getElementsText(List<WebElement> list) {
             List<String> elemTexts = new ArrayList<>();
             for (WebElement el : list) {
@@ -141,6 +144,7 @@ import java.util.function.Function;
 
 
         //======Fluent Wait====//
+
         public static WebElement fluentWait(final WebElement webElement, int timeout) {
             //FluentWait<WebDriver> wait = new FluentWait<WebDriver>(Driver.getDriver()).withTimeout(timeinsec, TimeUnit.SECONDS).pollingEvery(timeinsec, TimeUnit.SECONDS);
             FluentWait<WebDriver> wait = new FluentWait<WebDriver>(Driver.getDriver())
